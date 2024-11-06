@@ -1,6 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://daselg1ad3c7j"]
+[gd_scene load_steps=10 format=3 uid="uid://daselg1ad3c7j"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_kml8j"]
+[ext_resource type="Material" uid="uid://ew806vs30j6m" path="res://shader/blue.tres" id="2_mfmeq"]
+[ext_resource type="Material" uid="uid://dvk23e4kfqt1t" path="res://shader/red.tres" id="3_vsnmm"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rs8sg"]
+albedo_color = Color(1, 0.67451, 0.188235, 1)
+emission_enabled = true
+emission = Color(1, 0.685928, 0.356156, 1)
+emission_energy_multiplier = 3.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_s1blp"]
 
@@ -22,7 +30,8 @@ current = true
 fov = 85.0
 
 [node name="sphere" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60266, 2.27399, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.60623, 2.27399, 0.0029285)
+material_override = SubResource("StandardMaterial3D_rs8sg")
 mesh = SubResource("SphereMesh_s1blp")
 skeleton = NodePath("../Plane")
 
@@ -31,12 +40,14 @@ transform = Transform3D(0.998893, 0, -0.0470367, 0, 1, 0, 0.0470367, 0, 0.998893
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="LightVector"]
 transform = Transform3D(0.1, 0, -4.65661e-10, 0, 1, 0, 4.65661e-10, 0, 0.1, 0, 1.00942, 0)
+material_override = ExtResource("2_mfmeq")
 mesh = SubResource("CylinderMesh_3ngdh")
 skeleton = NodePath("../MeshInstance3D")
 surface_material_override/0 = SubResource("ShaderMaterial_2hlix")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="LightVector"]
 transform = Transform3D(0.249931, 0, 0.00588122, 0, 0.25, 0, -0.00588122, 0, 0.249931, 0, 2.09148, 0)
+material_override = ExtResource("2_mfmeq")
 mesh = SubResource("PrismMesh_4am46")
 skeleton = NodePath("../../Plane/MeshInstance3D2")
 
@@ -48,47 +59,61 @@ mesh = SubResource("BoxMesh_0y63w")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Plane"]
 transform = Transform3D(0.0999723, 0, -0.00235249, 0, 1, 0, 0.00235249, 0, 0.0999723, 0.0040797, 0.989733, -0.000421762)
+material_override = ExtResource("3_vsnmm")
 mesh = SubResource("CylinderMesh_3ngdh")
 skeleton = NodePath("../MeshInstance3D")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Plane"]
 transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0.0040797, 2.0718, -0.000421762)
+material_override = ExtResource("3_vsnmm")
 mesh = SubResource("PrismMesh_4am46")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.651529, 0.758623, 0, -0.758623, 0.651529, 0, 5.94214, 2.63859)
+visible = false
 
 [node name="DirectionalLight3D3" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.864003, 0.381958, -0.328037, 0, 0.651529, 0.758624, 0.503488, -0.655453, 0.562923, -6.84536, 4.3056, 2.63859)
+visible = false
 
 [node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.657533, -0.571566, 0.490879, 0, 0.651529, 0.758624, -0.753426, -0.49882, 0.428402, 3.7537, 5.94214, 2.63859)
+visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00503391, 2.42515, 2.00284)
+light_energy = 6.0
+
+[node name="LightFromSphere" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.61551, 2.28436, 0.00727817)
+light_energy = 12.0
+omni_range = 8.26594
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HSlider" type="HSlider" parent="CanvasLayer"]
-offset_left = 8.0
-offset_top = 604.0
-offset_right = 1145.0
-offset_bottom = 646.0
+offset_left = 14.0
+offset_top = 839.0
+offset_right = 1588.0
+offset_bottom = 881.0
 max_value = 1.0
 step = 0.01
 value = 0.5
 
 [node name="LightDotNormal" type="Label" parent="CanvasLayer"]
-offset_left = 591.0
-offset_top = 23.0
-offset_right = 921.0
-offset_bottom = 92.0
+offset_left = 964.0
+offset_top = 116.0
+offset_right = 1294.0
+offset_bottom = 185.0
 theme_override_font_sizes/font_size = 40
 text = "Light • Normal = "
 vertical_alignment = 1
 
 [node name="DotValue" type="Label" parent="CanvasLayer"]
-offset_left = 919.0
-offset_top = 22.0
-offset_right = 1103.0
-offset_bottom = 91.0
+offset_left = 1292.0
+offset_top = 115.0
+offset_right = 1476.0
+offset_bottom = 184.0
 theme_override_font_sizes/font_size = 40
 text = "0
 "
