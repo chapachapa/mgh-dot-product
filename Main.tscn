@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://daselg1ad3c7j"]
+[gd_scene load_steps=11 format=3 uid="uid://daselg1ad3c7j"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_kml8j"]
 [ext_resource type="Material" uid="uid://ew806vs30j6m" path="res://shader/blue.tres" id="2_mfmeq"]
+[ext_resource type="Material" uid="uid://bhclwu70axjej" path="res://shader/plane_shader.tres" id="3_2jn4q"]
 [ext_resource type="Material" uid="uid://dvk23e4kfqt1t" path="res://shader/red.tres" id="3_vsnmm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rs8sg"]
@@ -56,6 +57,7 @@ skeleton = NodePath("../../Plane/MeshInstance3D2")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Plane"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00401804, -0.1, -0.000415087)
 mesh = SubResource("BoxMesh_0y63w")
+surface_material_override/0 = ExtResource("3_2jn4q")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Plane"]
 transform = Transform3D(0.0999723, 0, -0.00235249, 0, 1, 0, 0.00235249, 0, 0.0999723, 0.0040797, 0.989733, -0.000421762)

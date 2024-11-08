@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bhclwu70axjej"]
+
+[ext_resource type="Shader" path="res://shader/plane_shader.gdshader" id="1_m3775"]
+[ext_resource type="Gradient" uid="uid://r4tb3ouemtbl" path="res://shader/plane_shader_gradient.tres" id="2_qypk5"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_o6dd5"]
+gradient = ExtResource("2_qypk5")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_m3775")
+shader_parameter/lightPos = Vector3(0.005, 2.425, 2.003)
+shader_parameter/gradient = SubResource("GradientTexture2D_o6dd5")
