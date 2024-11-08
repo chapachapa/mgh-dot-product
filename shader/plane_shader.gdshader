@@ -2,7 +2,7 @@ shader_type spatial;
 render_mode unshaded;
 
 uniform sampler2D gradient;
-uniform vec3 lightPos = vec3(-2.7, 2.097, 0.0);
+uniform vec3 lightPos = vec3(-2.606, 2.097, 0.0);
 // sorry i need a way to get the light obj's position still.
 // be careful of floating point values, it failed earlier bc of that :(
 
@@ -25,8 +25,3 @@ void fragment() {
 	ALBEDO = texture(gradient, vec2(dotProduct, 0.0)).rgb;
 	// got help from https://www.gdquest.com/tutorial/godot/shaders/gradient-map/
 }
-
-//void light() {
-	// Called for every pixel for every light affecting the material.
-	// Uncomment to replace the default light processing function with this one.
-//}
