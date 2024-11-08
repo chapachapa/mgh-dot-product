@@ -17,12 +17,11 @@ void vertex(){
 	normal = normalize(NORMAL);
 	//lightVector = normalize(vec3(lightPos.x - world_position.x, lightPos.y - world_position.y, lightPos.z - world_position.z));
 	lightVector = normalize(vec3(lightPos.x - NODE_POSITION_WORLD.x, lightPos.y - NODE_POSITION_WORLD.y, lightPos.z - NODE_POSITION_WORLD.z));
-	
 }
 
 void fragment() {
-	//float dotProduct = dot(lightVector, vec3(0, 0, 1));
-	float dotProduct = dot(lightVector, normal);
+	float dotProduct = dot(lightVector, vec3(0, 1, 0)); // use this for uniform color 
+	//float dotProduct = dot(lightVector, normal);
 	ALBEDO = texture(gradient, vec2(dotProduct, 0.0)).rgb;
 	// got help from https://www.gdquest.com/tutorial/godot/shaders/gradient-map/
 }
